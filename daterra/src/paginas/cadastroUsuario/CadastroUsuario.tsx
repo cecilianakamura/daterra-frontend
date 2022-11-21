@@ -1,12 +1,13 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import './CadastroUsuario.css';
-import { Box, Card, CardActionArea, CardContent, CardMedia, Radio } from '@mui/material';
+import { Box, Card, CardActionArea, CardContent, CardMedia, Radio, TextField} from '@mui/material';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import User from "../../models/User";
 import { cadastroUsuario } from "../../service/Service";
-import { Grid, Typography, TextField, Button } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 import { toast } from "react-toastify";
+import InputMask from 'react-input-mask'
 
 
 function CadastroUsuario() {
@@ -53,14 +54,16 @@ function CadastroUsuario() {
 
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-
+        if(e.target.name === 'cpnj' || e.target.name === 'cpf'){
+            e.target.value = e.target.value.replace(/^[0-9]/g,'')
+        }
         setUser({
             ...user,
             [e.target.name]: e.target.value,
             tipoUser: selectedValue
         })
-
     }
+
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
 
@@ -197,8 +200,30 @@ function CadastroUsuario() {
                             <TextField className='cadastroUsuarioTextfield'value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="usuario" label="Usuário (e-mail)" variant="outlined" name="usuario"  size="small" margin="dense"/>
                             <TextField className='cadastroUsuarioTextfield' value={user.cep} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="cep" label="CEP" variant="outlined" name="cep"  size="small"margin="dense"/>
                             {selectedValue === 'cpf' ? (
-                                <TextField className='cadastroUsuarioTextfield' value={user.cpf} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="cpf" label="CPF" variant="outlined" name="cpf"  size="small"margin="dense"/>)
-                                : (<TextField className='cadastroUsuarioTextfield' value={user.cpnj} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="cpnj" label="CNPJ" variant="outlined" name="cpnj"  size="small"margin="dense"/>)}
+                                <InputMask
+                                mask={'999.999.999-99'}
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                                value={user.cpf}  
+                                >
+                                {()=> <TextField 
+                                id="cpf" 
+                                label="CPF" 
+                                name="cpf"
+                                />
+                                }
+
+                                </InputMask>)
+                                :(
+                                <InputMask
+                                mask={'99.999.999/9999-99'}
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                                value={user.cpnj} 
+                                >
+                                
+                                {/* ()=> <TextField className='cadastroUsuarioTextfield'  id="cpnj" label="CNPJ" variant="outlined" name="cpnj"  size="small"margin="dense"/> */}
+                                
+                                </InputMask> 
+                            )}
                             {/* <TextField value={user.tipoUser} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="tipoUser" label="Tipo de Usuário" variant="outlined" name="tipoUser" /> */}
                             <TextField className='cadastroUsuarioTextfield' value={user.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="foto" label="URL da foto" variant="outlined" name="foto"  size="small" margin="dense"/>
                             <TextField className='cadastroUsuarioTextfield' value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="senha" label="Senha" variant="outlined" name="senha" type="password" placeholder='A senha deve conter no mínimo 7 caracteres' size="small"margin="dense"/>
