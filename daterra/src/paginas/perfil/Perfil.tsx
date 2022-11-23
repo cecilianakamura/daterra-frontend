@@ -51,9 +51,9 @@ function Perfil() {
       </Grid>
 
       <Grid item xs={6} className="perfilDadosGrid">
-        
-        <h1>Meu perfil</h1>
+      <h1>Meu perfil</h1>
         <div className="perfilDados">
+          
           <TextField
             className="perfilTextfield"
             id="filled-read-only-input"
@@ -106,7 +106,7 @@ function Perfil() {
           )}
         </div>
         {/* <Link to={`/cadastrousuario/${usuario.id}`} className="text-decorator-none"> MODIFICAR ENDPOINT*/}
-        <Box mx={1}>
+        {/* <Box mx={1}>
           <Button
             className="perfilBotaoEntrar"
             variant="contained"
@@ -116,7 +116,7 @@ function Perfil() {
           >
             atualizar
           </Button>
-        </Box>
+        </Box> */}
         {/* </Link> */}
       </Grid>
     </Grid>
