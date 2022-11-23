@@ -297,7 +297,7 @@ function Home() {
             COMPRAR:
           </Box>
           <div className='homeComoComprarStepper'>
-            <img className='homeComoComprarStepperIMG' src="https://i.imgur.com/uPanCPo.png" alt="1.Você faz seu pedido até quarta-feira, 2.O produtor colhe e prepara tudo fresquinho, 3.Você recebe sua feirinha em casa quinta-feira" />
+            <img className='homeComoComprarStepperIMG' src="https://i.imgur.com/3elMzdO.png" alt="1.Você faz seu pedido até quarta-feira, 2.O produtor colhe e prepara tudo fresquinho, 3.Você recebe sua feirinha em casa quinta-feira" />
           </div>
 
           {/* <Box className='homeComoComprar2'>
