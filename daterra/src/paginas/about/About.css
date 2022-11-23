@@ -3,7 +3,7 @@
 
 .titleAbout{
     font-family: 'Barlow', sans-serif !important;
-    font-size: 30px !important;
+    font-size: 20px !important;
 }
 
 .textoAboutBox {
@@ -11,14 +11,15 @@
     display: block;
     margin: auto;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
 }
 
 .textAbout{
+    display: block;
     font-family: 'Barlow', sans-serif !important;
-    font-size: 20px !important;
+    font-size: 25px !important;
     text-align: justify;
-    padding: 0.5rem;
 }
 
 .cursorAbout{
@@ -27,10 +28,11 @@
 
 .aboutgrid{
     background-color: #F6F6E9 !important;
+    justify-content:center ;
 }
 
 .videoAbout{
     display: flex;
     justify-content: center;
-    padding-bottom: 30px;
+    margin-top: 3rem;
 }
